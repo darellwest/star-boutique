@@ -47,9 +47,10 @@ class Directory extends React.Component{
     render(){
         return (
             <div className="directory-menu">
-                {this.state.sections.map(({title, imageUrl, id, size})  => (
-                    //title, imagurl and id all destructured from the state
-                    <MenuItem key={id} title={title} imageUrl={imageUrl} size={size}/>
+                {this.state.sections.map(({id, ...otherDestructuredProp})  => (
+                    //title, imagurl, linkUrl, size and id all destructured from the state
+                    //...otherDestructuredProp == title={title} imageUrl={imageUrl} size={size} link={linkUrl}
+                    <MenuItem key={id} {...otherDestructuredProp}/>
                 ))}
             </div>
         )
